@@ -24,7 +24,6 @@ export class NavMenuComponent {
 
   login() {
     this.context.userName = this.userName;
-    alert(this.context.userName + ' ' + this.userName);
     this.closeSignup();
     this.closeLogin();
   }
