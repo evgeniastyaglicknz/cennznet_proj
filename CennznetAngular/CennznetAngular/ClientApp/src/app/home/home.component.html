@@ -80,7 +80,25 @@
           </div>
         </form>
         <div class="card-footer">
-          <button type="button" class="subscribe btn btn-primary btn-block shadow-sm" (click)="closePayment(false)"> Confirm Payment </button>
+          <button type="button" class="subscribe btn btn-primary btn-block shadow-sm" (click)="closePayment(true)"> Confirm Payment </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="context.paymentSuccessfull">
+  <div class="popup-div">
+    <div class="card card-payment">
+      <div class="card-header">Successfull Payment</div>
+      <div id="credit-card" class="card-body">
+        <form role="form" onsubmit="event.preventDefault()">
+          <div class="alert alert-success">Your payment has been successfully completed. The tokens were transfered.</div>
+        </form>
+        <div class="card-footer">
+          <button type="button" class="subscribe btn btn-secondary btn-block shadow-sm" (click)="closeSuccess()"> Stay Anonymous </button>
+          <br />
+          <button type="button" class="subscribe btn btn-primary btn-block shadow-sm" (click)="closeSuccess()"> Take Ownership </button>
         </div>
       </div>
     </div>

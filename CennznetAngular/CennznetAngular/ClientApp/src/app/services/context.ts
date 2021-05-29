@@ -4,6 +4,7 @@ export class ContextService {
 
   public projects: Project[];
   public paymentOngoing: boolean = false;
+  public paymentSuccessfull: boolean = false;
   public showLogin: boolean = false;
   public showSignup: boolean = false;
 

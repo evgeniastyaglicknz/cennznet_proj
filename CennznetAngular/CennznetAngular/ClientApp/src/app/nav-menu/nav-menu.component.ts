@@ -28,6 +28,11 @@ export class NavMenuComponent {
     this.closeLogin();
   }
 
+  cancelLogin() {
+    this.closeSignup();
+    this.closeLogin();
+  }
+
   showLogin() {
     this.context.showLogin = true;
   }

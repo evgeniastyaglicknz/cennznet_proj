@@ -23,8 +23,12 @@ export class HomeComponent {
   closePayment(pay: boolean) {
     this.context.paymentOngoing = false;
     if (pay && this.selectedProject) {
-      alert("Payment for project: " + this.selectedProject.name);
+      this.context.paymentSuccessfull = true;
     }
+  }
+
+  closeSuccess() {
+    this.context.paymentSuccessfull = false;
   }
 }
 
