@@ -1,0 +1,109 @@
+<header>
+  <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <div class="container">
+      <a class="navbar-brand" [routerLink]="['/']"><img src="logo.png" /></a>
+      <button class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target=".navbar-collapse"
+              aria-label="Toggle navigation"
+              [attr.aria-expanded]="isExpanded"
+              (click)="toggle()">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end"
+           [ngClass]="{ show: isExpanded }">
+        
+        <ul class="navbar-nav flex-grow">
+          <li class="nav-item"
+              [routerLinkActive]="['link-active']"
+              [routerLinkActiveOptions]="{ exact: true }">
+            <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/management']">Management</a>
+          </li>
+          <li *ngIf="!context.userName" class="nav-item">
+            <a class="nav-link text-dark" (click)="showLogin()">Login</a>
+          </li>
+          <li *ngIf="!context.userName" class="nav-item">
+            <a class="nav-link text-dark" (click)="showSignup()">Signup</a>
+          </li>
+          <li *ngIf="context.userName">
+            <a class="nav-link text-dark">Welcome, {{context.userName}}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<div *ngIf="context.showLogin">
+  <div class="popup-div">
+    <div class="card card-payment">
+      <div class="card-header">Login</div>
+      <div id="credit-card" class="card-body">
+        <div class="container">
+          <div class="form-group">
+            <div class="form-label"><b>Username</b></div>
+            <input type="text" class="form-control" placeholder="Enter Username" [(ngModel)]="userName" required>
+          </div>
+
+          <div class="form-group">
+            <div class="form-label"><b>Password</b></div>
+            <input type="password" class="form-control" placeholder="Enter Password" name="psw" required>
+          </div>
+
+          <label>
+            <input type="checkbox" checked="checked" name="remember"> Remember me
+          </label>
+        </div>
+
+        <div class="card-footer">
+          <button type="button" class="subscribe btn btn-primary btn-block shadow-sm" (click)="login()"> Login </button>
+        </div>
+      </div>
+    </div> <!-- End -->
+    <a href="#" (click)="closeLogin()">Close Modal</a>
+  </div>
+</div>
+
+<div *ngIf="context.showSignup">
+  <div class="popup-div">
+    <div class="card card-payment">
+      <div class="card-header">Login</div>
+      <div id="credit-card" class="card-body">
+        <div class="container">
+          <h1>Sign Up</h1>
+          <p>Please fill in this form to create an account.</p>
+          <hr>
+          <div class="form-group">
+            <div class="form-label"><b>Username</b></div>
+            <input type="text" class="form-control" placeholder="Enter Username" [(ngModel)]="userName" required>
+          </div>
+
+          <div class="form-group">
+            <div class="form-label"><b>Password</b></div>
+            <input type="password" class="form-control" placeholder="Enter Password" name="psw" required>
+          </div>
+
+          <div class="form-group">
+            <div class="form-label"><b>Confirm Password</b></div>
+            <input type="password" class="form-control" placeholder="Enter Password" name="psw" required>
+          </div>          
+          <label>
+            <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+          </label>
+
+          <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+          <p>Already have an account? <a href="#">Login here</a>.</p>
+        </div>
+
+        <div class="card-footer">
+          <button type="button" class="subscribe btn btn-primary btn-block shadow-sm" (click)="login()"> Login </button>
+        </div>
+      </div>
+    </div> <!-- End -->
+    <a href="#" (click)="closeSignup()">Close Modal</a>
+  </div>
+</div>
